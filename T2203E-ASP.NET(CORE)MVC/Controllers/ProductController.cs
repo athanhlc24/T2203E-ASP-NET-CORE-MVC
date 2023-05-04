@@ -13,12 +13,12 @@ namespace T2203E_ASP.NET_CORE_MVC.Controllers
 
         public IActionResult Index()
         {   
-            Product p = new Product()
+        /*    Product p = new Product()
             {
                 Name = "ABC",thumbnail = "abc",Price = 120
             };
             _context.Products.AddAsync(p);
-            _context.SaveChangesAsync();
+            _context.SaveChangesAsync();*/
             return View();
         }
     }
