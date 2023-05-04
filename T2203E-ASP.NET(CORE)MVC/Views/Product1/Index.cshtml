@@ -1,0 +1,31 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    var product1 = ViewBag.product1;
+}
+<a href="#">Create</a>
+<table class="table">
+    <thread>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Thumnail</th>
+        <th>Edit</th>
+        <th>Delete</th>
+ 
+    </thread>
+    <tbody>
+        @foreach(var p  in product1)
+        {
+            <tr>
+                <td>@p.Id</td>
+                <td>@p.Name</td>
+                <td>@p.Price</td>
+                <td>@p.thumbnail</td>
+                <td><a href="~/Product1/Edit/@p.Id">Edit</a></td>
+            </tr>
+        }
+
+    </tbody>
+</table>
