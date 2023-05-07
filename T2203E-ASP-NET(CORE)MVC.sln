@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "T2203E-ASP-NET(CORE)MVC", "T2203E-ASP.NET(CORE)MVC\T2203E-ASP-NET(CORE)MVC.csproj", "{82476671-58B5-436E-8D79-9F75B3C8E5AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "T2203E-ASP-NET(CORE)MVC", "T2203E-ASP.NET(CORE)MVC\T2203E-ASP-NET(CORE)MVC.csproj", "{82476671-58B5-436E-8D79-9F75B3C8E5AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotNetAPI", "dotNetAPI\dotNetAPI.csproj", "{AEB32AA4-4DCE-4530-9451-EE899B571371}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{82476671-58B5-436E-8D79-9F75B3C8E5AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{82476671-58B5-436E-8D79-9F75B3C8E5AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{82476671-58B5-436E-8D79-9F75B3C8E5AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEB32AA4-4DCE-4530-9451-EE899B571371}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEB32AA4-4DCE-4530-9451-EE899B571371}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEB32AA4-4DCE-4530-9451-EE899B571371}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEB32AA4-4DCE-4530-9451-EE899B571371}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
