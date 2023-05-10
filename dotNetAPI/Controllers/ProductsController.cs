@@ -8,8 +8,9 @@ namespace dotNetAPI.Controllers
     [Route("api/products")]
     public class ProductsController : ControllerBase
     {
-        private readonly DataContext _context;
-        public ProductsController(DataContext context)
+        //Scaffold-DbContext "Data Source=.\SQLEXPRESS_THANH;Initial Catalog=dotNetAPI;Integrated Security=True;TrustServerCertificate=true" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Entities -Force
+        private readonly DotNetApiContext _context;
+        public ProductsController(DotNetApiContext context)
         {
             _context = context;
         }
@@ -22,10 +23,10 @@ namespace dotNetAPI.Controllers
         }
         [HttpGet]
         [Route("get-by-id")]
-        public IActionResult Get(int id) 
-        { 
+        public IActionResult Get(int id)
+        {
             var product = _context.Products.Find(id);
-            if(product == null)    
+            if (product == null)
                 return NotFound();
             return Ok(product);
         }
@@ -35,7 +36,7 @@ namespace dotNetAPI.Controllers
         {
             _context.Products.Add(product);
             _context.SaveChanges();
-            return Created($"/get-by-id?id={product.id}", product);
+            return Created($"/get-by-id?id={product.Id}", product);
         }
         [HttpPut]
         public IActionResult Update(Product product)

@@ -8,15 +8,15 @@ namespace dotNetAPI.Controllers
     [Route("api/categories")]
     public class CategorysController : ControllerBase
     {
-        private readonly DataContext _context;
-        public CategorysController(DataContext context)
+        private readonly DotNetApiContext _context;
+        public CategorysController(DotNetApiContext context)
         {
             _context = context;
         }
         [HttpGet]
         public IActionResult Index()
         {
-            var categories = _context.Category.ToList<Category>();
+            var categories = _context.Categories.ToList<Category>();
 
             return Ok(categories);
         }
@@ -24,7 +24,7 @@ namespace dotNetAPI.Controllers
         [Route("get-by-id")]
         public IActionResult Get(int id)
         {
-            var categories = _context.Category.Find(id);
+            var categories = _context.Categories.Find(id);
             if (categories == null)
                 return NotFound();
             return Ok(categories);
@@ -33,14 +33,14 @@ namespace dotNetAPI.Controllers
         [HttpPost]
         public IActionResult Create(Category categories)
         {
-            _context.Category.Add(categories);
+            _context.Categories.Add(categories);
             _context.SaveChanges();
-            return Created($"/get-by-id?id={categories.id}", categories);
+            return Created($"/get-by-id?id={categories.Id}", categories);
         }
         [HttpPut]
         public IActionResult Update(Category categories)
         {
-            _context.Category.Update(categories);
+            _context.Categories.Update(categories);
             _context.SaveChanges();
             return NoContent();
         }
@@ -48,10 +48,10 @@ namespace dotNetAPI.Controllers
         [HttpDelete]
         public IActionResult Delete(int id)
         {
-            var categoryDelete = _context.Category.Find(id);
+            var categoryDelete = _context.Categories.Find(id);
             if (categoryDelete == null)
                 return NotFound();
-            _context.Category.Remove(categoryDelete);
+            _context.Categories.Remove(categoryDelete);
             _context.SaveChanges();
             return NoContent();
         }

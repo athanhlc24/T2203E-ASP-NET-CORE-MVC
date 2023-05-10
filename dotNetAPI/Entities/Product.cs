@@ -1,18 +1,21 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-namespace dotNetAPI.Entities
+﻿using System;
+using System.Collections.Generic;
+
+namespace dotNetAPI.Entities;
+
+public partial class Product
 {
-    [Table("products")]
-    public class Product
-    {
-        [Key]// khoá chính
-        public int id { get; set; }
-        [Required]
-        [StringLength(255)]
-        public string name { get; set; }
-        [Required]
-        public decimal price { get; set; }
-        [StringLength(150)]
-        public string thumbnail { get; set; }
-    }
+    public int Id { get; set; }
+
+    public string Name { get; set; }
+
+    public decimal Price { get; set; }
+
+    public string? Thumbnail { get; set; }
+
+    public int Qty { get; set; }
+
+    public int CategoryId { get; set; }
+
+    public virtual Category? Category { get; set; }
 }
