@@ -17,7 +17,7 @@ namespace dotNetAPI.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            var products = _context.Products.ToList<Product>();
+            var products = _context.Products.Include(products=>products.Category).ToArray();
 
             return Ok(products);
         }
