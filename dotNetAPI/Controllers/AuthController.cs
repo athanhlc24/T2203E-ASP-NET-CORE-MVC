@@ -40,8 +40,6 @@ namespace dotNetAPI.Controllers
                 return NotFound("User not exist");
             }
             return Ok();
-
-
         }
     }
 }
