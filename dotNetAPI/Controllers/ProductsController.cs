@@ -56,5 +56,16 @@ namespace dotNetAPI.Controllers
             _context.SaveChanges();
             return NoContent();
         }
+        [HttpGet]
+        [Route("search")]
+        public IActionResult Search(string? q, int? limit=10,int? page=1)
+        {
+            limit = limit != null ? limit : 10;
+            page = page != null ? page : 1;
+
+            int offset = (int) ((page - 1) * limit);
+            var products = _context.Products.Where(p => p.Name.Contains(q)).Skip(offset).Take((int)limit).ToArray();//skip = số lượng bỏ qua, take = số lượng muốn lấy
+            return Ok(products);
+        }
     }
 }

@@ -15,7 +15,7 @@ public partial class Cart
 
     public string Email { get; set; } = null!;
 
-    public virtual Product? Product { get; set; } = null!;
+    public virtual Product Product { get; set; } = null!;
 
-    public virtual User? Users { get; set; } = null!;
+    public virtual User Users { get; set; } = null!;
 }
