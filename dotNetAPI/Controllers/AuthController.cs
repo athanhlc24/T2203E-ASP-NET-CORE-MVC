@@ -27,9 +27,21 @@ namespace dotNetAPI.Controllers
         }
         [HttpPost]
         [Route("/login")]
-        public IActionResult Login()
+        public IActionResult Login(UserLogin userLogin)
         {
+            var user = _context.Users.Where(user => user.Email == userLogin.Email).First();
+            if (user == null)
+            {
+                return NotFound("User not exist");
+            }
+            bool verified = BCrypt.Net.BCrypt.Verify(userLogin.Password, user.Password);
+            if (!verified)
+            {
+                return NotFound("User not exist");
+            }
             return Ok();
+
+
         }
     }
 }
