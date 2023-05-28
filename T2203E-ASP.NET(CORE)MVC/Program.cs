@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,6 +8,7 @@ builder.Services.AddControllersWithViews();
 var connectionString = builder.Configuration.GetConnectionString("ASP.NET");
 builder.Services.AddDbContext<T2203E_ASP.NET_CORE_MVC.Entities.DataContext>(
     options=>options.UseSqlServer(connectionString));
+
 
 var app = builder.Build();
 
@@ -20,9 +22,8 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
+app.UseAuthentication();
 app.UseRouting();
-
 app.UseAuthorization();
 
 app.MapControllerRoute(
