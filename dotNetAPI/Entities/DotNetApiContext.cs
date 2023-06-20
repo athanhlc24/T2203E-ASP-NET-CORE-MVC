@@ -142,6 +142,10 @@ public partial class DotNetApiContext : DbContext
                 .HasMaxLength(255)
                 .IsUnicode(false)
                 .HasColumnName("email");
+            entity.Property(e => e.JobTitle)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("job_title");
             entity.Property(e => e.Name)
                 .HasMaxLength(255)
                 .IsUnicode(false)
@@ -150,6 +154,10 @@ public partial class DotNetApiContext : DbContext
                 .HasMaxLength(255)
                 .IsUnicode(false)
                 .HasColumnName("password");
+            entity.Property(e => e.RoleTitle)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("role_title");
         });
 
         OnModelCreatingPartial(modelBuilder);

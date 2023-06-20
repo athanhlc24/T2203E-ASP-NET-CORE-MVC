@@ -41,17 +41,18 @@ namespace dotNetAPI.Controllers
         public IActionResult Login(UserLogin userLogin)
         {
             var user = _context.Users.Where(user => user.Email == userLogin.Email).First();
-            var u = new Entities.User { Email = user.Email, Name = user.Name};
+            
             if (user == null)
             {
-                return NotFound("User not exist");
+                return Unauthorized();
             }
+
             bool verified = BCrypt.Net.BCrypt.Verify(userLogin.Password, user.Password);
             if (!verified)
             {
-                return NotFound("User not exist");
+                return Unauthorized();
             }
-            return Ok(new UserData { Name = user.Name, Email = user.Email, Token = GenerateJWT(u) });
+            return Ok(new UserData {Id = user.Id, Name = user.Name, Email = user.Email, Token = GenerateJWT(user) });
         }
         private String GenerateJWT(User user)
         {
@@ -61,7 +62,10 @@ namespace dotNetAPI.Controllers
             {
                 new Claim(ClaimTypes.NameIdentifier,user.Id.ToString()),
                 new Claim(ClaimTypes.Name,user.Name),
-                new Claim(ClaimTypes.Email,user.Email)
+                new Claim(ClaimTypes.Email,user.Email),
+                //new Claim (ClaimTypes.Role,"Admin")
+                new Claim(ClaimTypes.Role,user.RoleTitle),
+                new Claim("IT",user.JobTitle)
             };
             var token = new JwtSecurityToken(
                 _config["JWT:Issuer"],//header

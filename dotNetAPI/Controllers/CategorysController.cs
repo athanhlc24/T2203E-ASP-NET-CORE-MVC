@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using dotNetAPI.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace dotNetAPI.Controllers
 {
@@ -14,6 +15,7 @@ namespace dotNetAPI.Controllers
             _context = context;
         }
         [HttpGet]
+        [Authorize(Policy = "Admin")]
         public IActionResult Index()
         {
             var categories = _context.Categories.ToList<Category>();

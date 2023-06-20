@@ -11,7 +11,7 @@ namespace dotNetAPI.Controllers
         private readonly DotNetApiContext _context;
         public BrandsController(DotNetApiContext context)
         {
-            _context = context;
+            _context = context; 
         }
         [HttpGet]
         public IActionResult Index()
